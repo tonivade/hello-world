@@ -22,6 +22,7 @@ nativeImage {
 tasks {
     "build" {
         dependsOn(fatJar)
+        dependsOn(nativeImage)
     }
 }
 
