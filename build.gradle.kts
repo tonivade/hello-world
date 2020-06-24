@@ -2,7 +2,7 @@ import org.gradle.jvm.tasks.Jar
 
 plugins {
     `java-library`
-    id("org.mikeneck.graalvm-native-image") version "0.5.0"
+    id("org.mikeneck.graalvm-native-image") version "0.6.1"
 }
 
 repositories {
@@ -10,11 +10,13 @@ repositories {
 }
 
 dependencies {
-    api("com.github.tonivade:zeromock-server:0.12.0")
+    api("com.github.tonivade:zeromock-server:0.13.0")
 }
 
+val userHome = System.getProperty("user.home")
+
 nativeImage {
-    setGraalVmHome("/home/slimbook/.sdkman/candidates/java/20.1.0.r8-grl")
+    setGraalVmHome("$userHome/.sdkman/candidates/java/20.1.0.r8-grl")
     setMainClass("demo.HelloWorld")
     setExecutableName("hello-world")
 }
