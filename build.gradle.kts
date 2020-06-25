@@ -33,7 +33,7 @@ val fatJar = task("fatJar", type = Jar::class) {
         attributes["Main-Class"] = "demo.HelloWorld"
     }
     classifier = "all"
-    from(configurations.compileClasspath.get().map({ if (it.isDirectory()) it else zipTree(it) }))
-    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory()) it else zipTree(it) }))
+    from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     with(tasks["jar"] as CopySpec)
 }
